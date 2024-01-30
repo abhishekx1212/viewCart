@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>cart</title>
+</head>
+
+<body>
+    <header id="header"></header>
+    <section class="view-cart" id="view-cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mt-4">
+                    <div class="view-cart-content">
+                        <table action="" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyData" class="align-items-center">
+                                <!-- <tr>
+                                    <td><img src="assets/images/p1.jpg" alt="" width="80px"></td>
+                                    <td>APPLE</td>
+                                    <td>$9000</td>
+                                    <td>10</td>
+                                    <td>$90000</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+<script src="assets/js/header.js"></script>
+<!-- <script src="assets/js/script1.js"></script> -->
+<script>
+    const products = JSON.parse(localStorage.getItem('products'));
+    let cartData = "";
+    if (products != null) {
+        for (var i = 0; i < products.length; i++) {
+            cartData += `
+            <tr>
+                <td><img src="${products[i].image}" alt="" width="80px"></td>
+                <td>${products[i].name}</td>
+                <td>$${products[i].price}</td>
+                <td>${products[i].quantity}</td>
+                <td>$${products[i].price * products[i].quantity}</td>
+            </tr> 
+        `
+        }
+    }
+    document.getElementById('tbodyData').innerHTML = cartData;
+    // localStorage.setItem('products', JSON.stringify(products));
+</script>
