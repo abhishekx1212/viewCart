@@ -21,8 +21,8 @@ for (var i = 0; i < student.length; i++) {
 let products = JSON.parse(localStorage.getItem('products'));
 const add = (productId) => {
 
-    if(products === null){
-        var products = [];
+    if (products === null) {
+        products = [];
     }
     const cartItem = {
         id: student[productId].id,
@@ -31,6 +31,8 @@ const add = (productId) => {
         image: student[productId].image,
         quantity: 1
     };
+
+    
     checkQuantity(cartItem);
 }
 
@@ -45,6 +47,7 @@ const checkQuantity = (cartItem) => {
         products.push(cartItem);
     }
 
+    viewData();;
     saveToLocalStorage();
 }
 
