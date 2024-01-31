@@ -49,8 +49,9 @@
 <!-- <script src="assets/js/script1.js"></script> -->
 <script>
     const products = JSON.parse(localStorage.getItem('products'));
+    console.log(products)
     let cartData = "";
-    if (products != null) {
+    if (products) {
         for (var i = 0; i < products.length; i++) {
             cartData += `
             <tr>
@@ -58,11 +59,23 @@
                 <td>${products[i].name}</td>
                 <td>$${products[i].price}</td>
                 <td>${products[i].quantity}</td>
-                <td>$${products[i].price * products[i].quantity}</td>
+                <td>
+                    $${products[i].price * products[i].quantity}
+                    <button class="btn btn-danger" onclick="del(${i})">DELETE</button>
+                </td>
             </tr> 
         `
         }
     }
     document.getElementById('tbodyData').innerHTML = cartData;
-    // localStorage.setItem('products', JSON.stringify(products));
+
+    function del(ind) {
+        products.splice(ind, 1);
+        saveToLocalStorage();
+        
+    }
+
+    function saveToLocalStorage() {
+    localStorage.setItem('products', JSON.stringify(products));
+}
 </script>

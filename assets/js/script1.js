@@ -47,8 +47,7 @@ const checkQuantity = (cartItem) => {
     viewData();
 }
 
-
-
 function saveToLocalStorage() {
     localStorage.setItem('products', JSON.stringify(products));
 }
+
