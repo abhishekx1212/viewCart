@@ -24,6 +24,7 @@ const headerData = `
 
 document.querySelector('#header').innerHTML = headerData;
 const product = JSON.parse(localStorage.getItem('products'));
+viewData();
 function viewData() {
     if (product != null) {
         document.getElementById('cartNum').innerHTML = product.length;
@@ -31,4 +32,3 @@ function viewData() {
         document.getElementById('cartNum').innerHTML = 0;
     }
 }
-viewData();

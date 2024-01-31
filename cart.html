@@ -27,18 +27,13 @@
                                     <th>Total</th>
                                 </tr>
                             </thead>
-                            <tbody id="tbodyData" class="align-items-center">
-                                <!-- <tr>
-                                    <td><img src="assets/images/p1.jpg" alt="" width="80px"></td>
-                                    <td>APPLE</td>
-                                    <td>$9000</td>
-                                    <td>10</td>
-                                    <td>$90000</td>
-                                </tr> -->
-                            </tbody>
+                            <tbody id="tbodyData" class="align-items-center"></tbody>
                         </table>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <button onclick="tabClr()" class="btn btn-success" style="width: 100px;">CLEAR</button>
             </div>
         </div>
     </section>
@@ -46,36 +41,66 @@
 
 </html>
 <script src="assets/js/header.js"></script>
-<!-- <script src="assets/js/script1.js"></script> -->
 <script>
     const products = JSON.parse(localStorage.getItem('products'));
-    console.log(products)
-    let cartData = "";
-    if (products) {
-        for (var i = 0; i < products.length; i++) {
-            cartData += `
+    function printTable() {
+        console.log(products)
+        let cartData = "";
+        if (products) {
+            for (var i = 0; i < products.length; i++) {
+                cartData += `
             <tr>
                 <td><img src="${products[i].image}" alt="" width="80px"></td>
                 <td>${products[i].name}</td>
                 <td>$${products[i].price}</td>
-                <td>${products[i].quantity}</td>
+                <td>
+                    <button class="btn btn-primary" onclick="increase(${i})">+</button>
+                    <span>${products[i].quantity}</span>
+                    <button class="btn btn-primary" onclick="decrease(${i})">-</button>
+                </td>
                 <td>
                     $${products[i].price * products[i].quantity}
                     <button class="btn btn-danger" onclick="del(${i})">DELETE</button>
                 </td>
             </tr> 
         `
+            }
         }
+        document.getElementById('tbodyData').innerHTML = cartData;
     }
-    document.getElementById('tbodyData').innerHTML = cartData;
+
+    printTable()
 
     function del(ind) {
         products.splice(ind, 1);
         saveToLocalStorage();
-        
+        printTable();
+    }
+
+    function tabClr() {
+        products.splice(0, products.length);
+        saveToLocalStorage();
+        printTable();
+    }
+
+    function increase(ind) {
+        products[ind].quantity += 1;
+        saveToLocalStorage();
+        printTable();
+    }
+
+    function decrease(ind) {
+        if (products[ind].quantity != 1) {
+            products[ind].quantity -= 1;
+            saveToLocalStorage();
+            printTable();
+        } else {
+            alert('Invalid!');
+        }
     }
 
     function saveToLocalStorage() {
-    localStorage.setItem('products', JSON.stringify(products));
-}
+        localStorage.setItem('products', JSON.stringify(products));
+    }
+
 </script>

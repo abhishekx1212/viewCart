@@ -1,5 +1,3 @@
-const products = [];
-
 var student = [
     { id: 0, image: 'assets/images/p1.jpg', name: 'APPLE', price: 9000, },
     { id: 1, image: 'assets/images/p2.jpg', name: 'SAMSUNG', price: 1000, },
@@ -20,8 +18,12 @@ for (var i = 0; i < student.length; i++) {
     </div>
 `;
 }
-
+let products = JSON.parse(localStorage.getItem('products'));
 const add = (productId) => {
+
+    if(products === null){
+        var products = [];
+    }
     const cartItem = {
         id: student[productId].id,
         name: student[productId].name,
@@ -44,7 +46,6 @@ const checkQuantity = (cartItem) => {
     }
 
     saveToLocalStorage();
-    viewData();
 }
 
 function saveToLocalStorage() {
