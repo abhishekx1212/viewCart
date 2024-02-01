@@ -35,6 +35,10 @@
             </div>
             <div class="row">
                 <button onclick="tabClr()" class="btn btn-success" style="width: 100px;">CLEAR</button>
+                <span class="text-white mt-2 fs-5 px-0" style="display: inline;">
+                    TOTAL COST
+                    <span id="subTotal">$0</span>
+                </span>
             </div>
         </div>
     </section>
@@ -57,8 +61,10 @@
     function printTable() {
         console.log(products)
         let cartData = "";
+        let totalVal = 0;
         if (products) {
             for (var i = 0; i < products.length; i++) {
+                totalVal += products[i].price * products[i].quantity;
                 cartData += `
             <tr>
                 <td><img src="${products[i].image}" alt="" width="80px"></td>
@@ -78,20 +84,23 @@
             }
         }
         document.getElementById('tbodyData').innerHTML = cartData;
+        document.getElementById('subTotal').innerHTML = `$${totalVal}`;
     }
-
+   
     printTable()
 
     function del(ind) {
         products.splice(ind, 1);
         saveToLocalStorage();
         printTable();
+        viewData();
     }
 
     function tabClr() {
         products.splice(0, products.length);
         saveToLocalStorage();
         printTable();
+        viewData();
     }
 
     function increase(ind) {
