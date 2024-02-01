@@ -1,0 +1,15 @@
+@media (max-width:768px){
+    .fa-bars{
+        display: inline-block;
+    }
+
+    .header-content .nav-1 .a-hide{
+        display:none;
+      }
+}
+
+@media (max-width:576px){
+  .view-cart-content{
+    overflow-x: scroll;
+  }
+}

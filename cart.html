@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/media.css">
     <title>cart</title>
 </head>
 
-<body>
+<body style="background-color: rgba(0, 0, 0, 0.7);">
     <header id="header"></header>
     <section class="view-cart" id="view-cart">
         <div class="container">
@@ -20,11 +21,11 @@
                         <table action="" class="table">
                             <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Qty</th>
-                                    <th>Total</th>
+                                    <th class="col-1">Image</th>
+                                    <th class="col-2">Name</th>
+                                    <th class="col-2">Price</th>
+                                    <th class="col-3">Qty</th>
+                                    <th class="col-4">Total</th>
                                 </tr>
                             </thead>
                             <tbody id="tbodyData" class="align-items-center"></tbody>
@@ -40,7 +41,17 @@
 </body>
 
 </html>
+<script src="assets/js/jquery.js"></script>
 <script src="assets/js/header.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.fa-bars').click(function (e) {
+            e.preventDefault()
+
+            $('.nav-2').slideToggle()
+        })
+    })
+</script>
 <script>
     const products = JSON.parse(localStorage.getItem('products'));
     function printTable() {
@@ -54,9 +65,9 @@
                 <td>${products[i].name}</td>
                 <td>$${products[i].price}</td>
                 <td>
-                    <button class="btn btn-primary" onclick="increase(${i})">+</button>
-                    <span>${products[i].quantity}</span>
-                    <button class="btn btn-primary" onclick="decrease(${i})">-</button>
+                    <button class="btn btn-primary " onclick="increase(${i})">+</button>
+                    <span style="font-size:25px;" class="">${products[i].quantity}</span>
+                    <button class="btn btn-primary mt-1 mt-sm-2 me-sm-4 mt-md-0 me-md-0" onclick="decrease(${i})">-</button>
                 </td>
                 <td>
                     $${products[i].price * products[i].quantity}

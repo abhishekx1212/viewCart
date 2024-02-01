@@ -15,15 +15,18 @@ button {
   color: white;
 }
 
+.card span {
+  color: lightgreen;
+}
 
 .card {
-  background-color: rgba(255, 225, 225, 0.4);
+  background-color: rgba(225, 225, 225, 0.4);
   padding: 15px;
   margin-bottom: 15px;
   display: inline-block;
   width: 100%;
-  color: black;
-  border: 1px solid white;
+  color: lightgoldenrodyellow;
+  border: none;
   border-radius: 20px;
   backdrop-filter: blur(10px);
 }
@@ -34,23 +37,69 @@ button {
   margin-top: 10px;
 }
 
-.header-content nav a {
+.header-content .nav-1 a {
   font-size: 30px;
   margin: 0 10px 0 0;
   text-decoration: none;
   color: white;
 }
 
+.fa-bars {
+  font-size: 30px;
+  color: white;
+  display: none;
+}
+
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header-content .nav-1 .a-hide {
+  display: inline-block;
+}
+
+.header-parent {
+  position: relative;
+}
+
+.header-content .nav-2 {
+  position: absolute;
+  display: none;
+  right: 0;
+  top: 55px;
+  padding: 10px 15px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 999;
+}
+
+.header-content .nav-2 a {
+  display: block;
+  color: white;
+  font-size: 29px;
+}
+
+.table{
+  --bs-table-bg: none;
+}
+
+.view-cart-content{
+  overflow-x: hidden;
+}
+
 #tbodyData tr td,
 thead tr th {
   vertical-align: middle;
   text-align: center;
+  color:white !important;
 }
 
-thead tr th{
+thead tr th {
   font-size: 25px;
 }
 
-#tbodyData tr td{
+#tbodyData tr td {
   font-size: 20px;
 }
