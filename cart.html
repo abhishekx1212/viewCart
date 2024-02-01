@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row px-3 pt-2">
                 <button onclick="tabClr()" class="btn btn-success" style="width: 100px;">CLEAR</button>
                 <span class="text-white mt-2 fs-5 px-0" style="display: inline;">
                     TOTAL COST
@@ -45,8 +45,8 @@
 </body>
 
 </html>
-<script src="assets/js/jquery.js"></script>
 <script src="assets/js/header.js"></script>
+<script src="assets/js/jquery.js"></script>
 <script>
     $(document).ready(function () {
         $('.fa-bars').click(function (e) {
@@ -57,7 +57,7 @@
     })
 </script>
 <script>
-    const products = JSON.parse(localStorage.getItem('products'));
+    var products = JSON.parse(localStorage.getItem('products'));
     function printTable() {
         console.log(products)
         let cartData = "";
@@ -86,8 +86,8 @@
         document.getElementById('tbodyData').innerHTML = cartData;
         document.getElementById('subTotal').innerHTML = `$${totalVal}`;
     }
-   
-    printTable()
+
+
 
     function del(ind) {
         products.splice(ind, 1);
@@ -118,7 +118,7 @@
             alert('Invalid!');
         }
     }
-
+    printTable();
     function saveToLocalStorage() {
         localStorage.setItem('products', JSON.stringify(products));
     }

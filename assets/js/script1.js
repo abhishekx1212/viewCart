@@ -48,8 +48,8 @@ const checkQuantity = (cartItem) => {
         products.push(cartItem);
     }
 
-    viewData();;
     saveToLocalStorage();
+    viewData();
 }
 
 function saveToLocalStorage() {

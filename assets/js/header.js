@@ -31,7 +31,7 @@ const headerData = `
 
 
 document.querySelector('#header').innerHTML = headerData;
-// const product = JSON.parse(localStorage.getItem('products'));
+const product = JSON.parse(localStorage.getItem('products'));
 
 function viewData() {
     const product = JSON.parse(localStorage.getItem('products'));
@@ -41,5 +41,4 @@ function viewData() {
         document.getElementById('cartNum').innerHTML = 0;
     }
 }
-
 viewData();
